@@ -1,0 +1,27 @@
+{
+  "name": "richard-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teddy-thie/portfolio-mungla.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teddy-thie/portfolio-mungla/issues"
+  },
+  "homepage": "https://github.com/teddy-thie/portfolio-mungla#readme",
+  "dependencies": {
+    "parcel": "^2.7.0",
+    "sass": "^1.55.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0"
+  }
+}
