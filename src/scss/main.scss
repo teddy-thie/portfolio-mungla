@@ -1,0 +1,169 @@
+@use 'base/base' as base;
+@use 'abstracts/colors' as col;
+@use 'abstracts/fonts' as fon;
+@use 'abstracts/mixins' as mix;
+@use 'abstracts/spacing' as sp;
+@use 'layout/breakpoints' as br;
+
+//Items to go within the root element
+:root {
+
+    //Create color variables
+    @each $color,
+    $shades in col.$colors {
+
+        @each $shade,
+        $value in $shades {
+            --clr-#{$color}-#{$shade}: #{$value};
+        }
+    }
+
+    //Font Weight Variables
+    @each $weight,
+    $value in fon.$type-weight {
+        --fw-#{$weight}: #{$value};
+    }
+
+    //Font Size Variables
+    @each $screen,
+    $sizes in fon.$type-scale {
+        @if $screen ==large {
+
+            @each $size,
+            $value in $sizes {
+                --fs-#{$size}: #{$value};
+            }
+        }
+
+        @else {
+            @include mix.mq(br.$sm-devices) {
+
+                @each $size,
+                $value in $sizes {
+                    --fs-#{$size}: #{$value};
+                }
+            }
+        }
+    }
+
+}
+
+//Color classes
+@each $color,
+$shades in col.$colors {
+
+    @each $shade,
+    $value in $shades {
+        .clr-#{$color}-#{$shade} {
+            color: #{$value};
+        }
+
+        .bg-clr-#{$color}-#{$shade} {
+            background-color: #{$value};
+        }
+    }
+}
+
+
+//Font Size Classes
+@each $screen,
+$sizes in fon.$type-scale {
+    @if $screen ==large {
+
+        @each $size,
+        $value in $sizes {
+            .fs-#{$size} {
+                font-size: #{$value};
+            }
+        }
+    }
+
+    @else {
+        @include mix.mq(br.$sm-devices) {
+
+            @each $size,
+            $value in $sizes {
+                .fs-#{$size} {
+                    font-size: #{$value};
+                }
+            }
+        }
+    }
+}
+
+//Spacing Classes
+@each $pos,
+$space in sp.$spaces {
+    @each $side in sp.$sides {
+        @if $side ==all {
+            .pa-#{$pos} {
+                padding: #{$space} !important;
+            }
+
+            .ma-#{$pos} {
+                margin: #{$space} !important;
+            }
+        }
+
+        @if $side ==y {
+            .py-#{$pos} {
+                padding: #{$space} 0 !important;
+            }
+
+            .my-#{$pos} {
+                margin: #{$space} 0 !important;
+            }
+        }
+
+        @if $side ==x {
+            .px-#{$pos} {
+                padding: 0 #{$space} !important;
+            }
+
+            .mx-#{$pos} {
+                margin: 0 #{$space} !important;
+            }
+        }
+
+        @if $side ==t {
+            .pt-#{$pos} {
+                padding-top: #{$space} !important;
+            }
+
+            .mt-#{$pos} {
+                margin-top: #{$space} !important;
+            }
+        }
+
+        @if $side ==b {
+            .pb-#{$pos} {
+                padding-bottom: #{$space} !important;
+            }
+
+            .mb-#{$pos} {
+                margin-bottom: #{$space} !important;
+            }
+        }
+
+        @if $side ==l {
+            .pl-#{$pos} {
+                padding-left: #{$space} !important;
+            }
+
+            .ml-#{$pos} {
+                margin-left: #{$space} !important;
+            }
+        }
+
+        @if side==r {
+            .pr-#{$pos} {
+                padding-right: #{$space} !important;
+            }
+
+            .mr-#{$pos} {
+                margin-right: #{$space} !important;
+            }
+        }
+
+    }
+}
