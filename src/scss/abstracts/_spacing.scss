@@ -1,0 +1,28 @@
+// Default spacing
+$spacer: 16;
+
+// Set Spacing
+$one: unquote(($spacer*0.25) + 'px');
+$two: unquote(($spacer*0.5) + 'px');
+$three: unquote(($spacer) + 'px');
+$four: unquote(($spacer*1.25) + 'px');
+$five: unquote(($spacer*1.5) + 'px');
+
+$spaces: (
+    1: $one,
+    2: $two,
+    3: $three,
+    4: $four,
+    5: $five
+);
+
+//Set different instances spacing could be used
+$sides: (
+    x,
+    y,
+    all,
+    top,
+    bottom,
+    left,
+    right
+);
